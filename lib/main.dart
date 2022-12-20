@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
-// import settings file.
+// import settings
 import 'settings/settings.dart';
-
+// import libs
 import 'api/sellerApi.dart';
+import 'controllers/viewer.dart';
 
 void main() {
-  SellerApi sellerApi = SellerApi(sellersUrl);
-  sellerApi.getsellers();
+  Viewer viewer = new Viewer();
+  viewer.viewSellers();
+
+  // SellerApi sellerApi = SellerApi(sellersUrl);
+  // sellerApi.getsellers();
   runApp(const MyApp());
 }
 

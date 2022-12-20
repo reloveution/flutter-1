@@ -1,16 +1,16 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
-import 'dart:io';
-import 'dart:async';
+// import 'dart:io';
+// import 'dart:async';
 
 class BaseApiService {
   get(url) {
     // make request
     http.get(url).then((response) => {
           // print(response.statusCode)
-          print(response.body),
-          print('------'),
-          print(response.body.runtimeType)
+          // print(response.body),
+          // print('------'),
+          // print(response.body.runtimeType)
+          response.body
           // print((convert.jsonDecode(response.body) as Map<dynamic, String>))
           // convert.jsonDecode(response.body) as Map<String, dynamic>,
         });

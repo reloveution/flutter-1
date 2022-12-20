@@ -1,9 +1,8 @@
 import '../builders/sellersListBuilder.dart';
 
-sellersListBuilder = new SellersListBuilder();
-
 class Viewer {
   viewSellers() {
+    SellersListBuilder sellersListBuilder = new SellersListBuilder();
     print(sellersListBuilder.build());
   }
 }
