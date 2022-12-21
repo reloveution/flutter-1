@@ -7,11 +7,11 @@ import 'api/sellerApi.dart';
 import 'controllers/viewer.dart';
 
 void main() {
-  Viewer viewer = new Viewer();
-  viewer.viewSellers();
+  // Viewer viewer = new Viewer();
+  // viewer.viewSellers();
 
-  // SellerApi sellerApi = SellerApi(sellersUrl);
-  // sellerApi.getsellers();
+  SellerApi sellerApi = SellerApi(sellersUrl);
+  sellerApi.getsellers();
   runApp(const MyApp());
 }
 

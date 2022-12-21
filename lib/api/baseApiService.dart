@@ -8,8 +8,9 @@ class BaseApiService {
     http.get(url).then((response) => {
           // print(response.statusCode)
           // print(response.body),
-          // print('------'),
-          // print(response.body.runtimeType)
+          print('--from baseApiService----'),
+          print(response.body),
+          print(response.body.runtimeType),
           response.body
           // print((convert.jsonDecode(response.body) as Map<dynamic, String>))
           // convert.jsonDecode(response.body) as Map<String, dynamic>,

@@ -9,10 +9,10 @@ class SellerApi extends BaseApiService {
   }
 
   getsellers() {
-    // print(super.get(this.url));
-    // print('Hello World!');
-    String sellers = super.get(this.url);
-    sellers;
+    print('---from sellerApi---');
+    print(super.get(this.url));
+    print('---------------');
+
     // return SellerModel.sellerArrayBuilder(result).build(),
   }
 }
