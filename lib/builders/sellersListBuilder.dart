@@ -2,31 +2,28 @@ import '../api/sellerApi.dart';
 import '../models/sellerModel.dart';
 import '../settings/settings.dart';
 
-// class SellersListBuilder {
-//   build() {
-//     SellerApi sellerApi = new SellerApi(sellersUrl);
-//     List sellersList = sellerApi.getsellers();
-//   }
-// }
+class SellersListBuilder {
+  build() {
+    SellerApi sellerApi = new SellerApi();
+    List sellersList = sellerApi.getsellers();
+  }
 
-// class SellerModelBuilder {
-//   build() {}
-// }
+  // build() {
+  //     let sellerArray = []
+  //     for (let i = 0; i < (this.jsonData.length); i++) {
+  //         sellerArray[i] = new SellerBuilder(this.jsonData[i]).build()
+  //     }
+  //     return sellerArray;
+  // }
 
-// class SellerInfoBuilder {
-//   // String? firstName;
-//   // String? lastName;
-//   // String? email;
+}
 
-//   SellerInfoBuilder(List sellerInfo) {
-//     this.firstName = sellerInfo.firstName;
-//   }
+class SellerModelBuilder {
+  build() {}
+}
 
-//   // SellerInfo.fromJson(Map<String, dynamic> json) {
-//   //   firstName = json['firstName'];
-//   //   lastName = json['lastName'];
-//   //   email = json['email'];
-//   // }
-
-//   build() {}
-// }
+class SellerInfoBuilder {
+  // SellerInfoBuilder(List sellerInfo) {
+  //   this.firstName = sellerInfo.firstName;
+  // }
+}

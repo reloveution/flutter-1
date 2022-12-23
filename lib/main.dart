@@ -10,7 +10,7 @@ void main() {
   // Viewer viewer = new Viewer();
   // viewer.viewSellers();
 
-  SellerApi sellerApi = SellerApi(sellersUrl);
+  SellerApi sellerApi = SellerApi();
   sellerApi.getsellers();
   runApp(const MyApp());
 }
