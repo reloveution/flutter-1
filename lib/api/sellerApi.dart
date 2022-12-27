@@ -5,6 +5,6 @@ class SellerApi extends BaseApiService {
 
   getsellers() {
     print('---from sellerApi---');
-    super.get(sellersDefUrl).then((result) => result);
+    return super.get(sellersDefUrl).then((response) => response);
   }
 }

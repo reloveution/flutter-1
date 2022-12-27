@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 // import settings
 
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //
       //_counter++;
       //
-      print(sellerApi.getsellers());
+      sellerApi.getsellers().then((result) => print('+++${result}'));
     });
   }
 
