@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-// import settings
-
 // import libs
-import 'api/sellerApi.dart';
+// import 'api/sellerApi.dart';
 import 'controllers/viewer.dart';
 
 void main() {
@@ -73,7 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
       //
       //_counter++;
       //
-      sellerApi.getsellers().then((result) => print('+++${result}'));
+      // sellerApi.getsellers().then((result) => print('+++${result}'));
+      //
     });
   }
 
