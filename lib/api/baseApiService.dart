@@ -2,12 +2,10 @@ import 'package:http/http.dart' as http;
 // import 'dart:io';
 // import 'dart:async';
 
-import '../settings/settings.dart';
-
 class BaseApiService {
-  get() {
+  get(uri) {
     // make request
-    return http.get(sellersDefUrl).then((response) => {response.body});
+    return http.get(uri).then((response) => response.body);
   }
 
   // get(url) {

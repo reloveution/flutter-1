@@ -1,8 +1,10 @@
 import 'baseApiService.dart';
 
 class SellerApi extends BaseApiService {
+  Uri sellersDefUrl = Uri.parse('http://localhost:3000/seller');
+
   getsellers() {
     print('---from sellerApi---');
-    return super.get().then((result) => {print(result)});
+    super.get(sellersDefUrl).then((result) => result);
   }
 }

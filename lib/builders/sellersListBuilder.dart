@@ -1,6 +1,5 @@
 import '../api/sellerApi.dart';
 import '../models/sellerModel.dart';
-import '../settings/settings.dart';
 
 class SellersListBuilder {
   build() {
