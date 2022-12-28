@@ -59,7 +59,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  SellerApi sellerApi = SellerApi();
+  // SellerApi sellerApi = SellerApi();
+  Viewer view = new Viewer();
 
   void _incrementCounter() {
     setState(() {
@@ -73,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //
       // sellerApi.getsellers().then((result) => print('+++${result}'));
       //
+      print('---main---${view.sellers()}');
     });
   }
 

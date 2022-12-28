@@ -1,5 +1,15 @@
 import 'dart:convert';
 
+// class SellersList {
+// //   //--// Map<List, SellerModel>? sellersList;
+//   // Map<int, SellerModel>? sellersList;
+//   List<SellerModel>? sellersList;
+
+//   SellersList() {
+//     sellersList = [];
+//   }
+// }
+
 class SellerModel {
   SellerInfo? sellerInfo;
   String? id;

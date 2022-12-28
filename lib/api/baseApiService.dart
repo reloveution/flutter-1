@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class BaseApiService {
   get(uri) {
+    print('---from baseApi---');
     return http.get(uri).then((response) => response.body);
   }
 
