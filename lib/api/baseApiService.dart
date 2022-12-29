@@ -1,11 +1,12 @@
 import 'package:http/http.dart' as http;
 // import 'dart:io';
 // import 'dart:async';
+import 'dart:convert';
 
 class BaseApiService {
   get(uri) {
     print('---from baseApi---');
-    return http.get(uri).then((response) => response.body);
+    return http.get(uri).then((response) => jsonDecode(response.body));
   }
 
   // get(url) {
