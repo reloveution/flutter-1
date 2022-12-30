@@ -4,8 +4,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class BaseApiService {
-  get(uri) {
-    return http.get(uri).then((response) => jsonDecode(response.body));
+  Future<dynamic> get(uri) {
+    return http.get(uri).then((response) {
+      final temp = jsonDecode(response.body);
+      return temp;
+    });
   }
 
   // get(url) {

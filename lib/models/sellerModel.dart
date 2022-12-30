@@ -19,14 +19,14 @@ class SellerModel {
 
   SellerModel.fromJson(Map<String, dynamic> json) {
     sellerInfo = json['sellerInfo'] != null
-        ? new SellerInfo.fromJson(json['sellerInfo'])
+        ? SellerInfo.fromJson(json['sellerInfo'])
         : null;
     id = json['id'];
     sellerId = json['sellerId'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     if (this.sellerInfo != null) {
       data['sellerInfo'] = this.sellerInfo!.toJson();
     }
@@ -50,7 +50,7 @@ class SellerInfo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['firstName'] = this.firstName;
     data['lastName'] = this.lastName;
     data['email'] = this.email;

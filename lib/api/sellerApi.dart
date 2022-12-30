@@ -1,3 +1,5 @@
+import 'package:rest/models/sellerModel.dart';
+
 import 'baseApiService.dart';
 import '../builders/sellersListBuilder.dart';
 
@@ -8,9 +10,10 @@ class SellerApi extends BaseApiService {
   //   return super.get(sellersDefUrl).then((response) => response);
   // }
 
-  getSellers() {
-    return super
-        .get(sellersDefUrl)
-        .then((response) => SellersListBuilder.build(response));
+  Future<List<SellerModel>> getSellers() {
+    return super.get(sellersDefUrl).then((response) {
+      final test = SellersListBuilder.build(response);
+      return test;
+    });
   }
 }
