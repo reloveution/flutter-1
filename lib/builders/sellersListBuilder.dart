@@ -2,33 +2,36 @@ import '../api/sellerApi.dart';
 import '../models/sellerModel.dart';
 
 class SellersListBuilder {
-  build() {
-    SellerApi sellerApi = new SellerApi();
+  // build() {
+  //   SellerApi sellerApi = new SellerApi();
+  //   List<SellerModel>? sellersList = [];
+  //   // print('---from SellersListBuilder');
+  //   sellerApi.getsellers().then((response) => {
+  //         // print('sellerListBuilder 1${sellersList}')
+  //         for (int i = 0; i < response.length; i++)
+  //           {
+  //             sellersList.add(new SellerModel.fromJson(response[i])),
+  //             // print('sellerListBuilder 1${sellersList}')
+  //             print(sellersList[i].sellerInfo!.email)
+  //           }
+  //       });
+  //   return sellersList;
+  // }
+  static build(List response) {
     List<SellerModel>? sellersList = [];
-    // final sellersList = <List<SellerModel>>[];
-    print('---from SellersListBuilder');
-    sellerApi
-        .getsellers()
-        .then((response) => {
-              // print('--response---${response[1]}---${response.length}'),
-              for (int i = 0; i < response.length; i++)
-                {
-                  sellersList.add(new SellerModel.fromJson(response[i])),
-                  print(SellerModel.fromJson(response[i]))
-                },
-              // {sellersList[i] = new SellerModel.fromJson(response[i])},
-              // sellersList = new SellerModel.fromJson(response)
-              print('--E--${sellersList[1]}')
-            })
-        .then((sellersList) => {print('--W--${sellersList[2]}')});
-    // Map sellersListBuilder = new SellersListBuilder().build();
+    for (int i = 0; i < response.length; i++) {
+      sellersList.add(new SellerModel.fromJson(response[i]));
+      // print('sellerListBuilder 1${sellersList}')
+      print(sellersList[i].sellerInfo!.email);
+    }
 
-    // SellerApi sellerApi = new SellerApi();
-    // SellerModel sellerModel = new SellerModel();
-    // sellerApi.getsellers().then((result) => print('+++${result}'));
+    return sellersList;
   }
 }
 
 // class SellerModelBuilder {
 //   build() {}
 // }
+
+// print('--E--${sellersList[0].sellerId}'),
+// print('--E--${sellersList[0].sellerInfo!.firstName}')

@@ -5,7 +5,6 @@ import 'dart:convert';
 
 class BaseApiService {
   get(uri) {
-    print('---from baseApi---');
     return http.get(uri).then((response) => jsonDecode(response.body));
   }
 

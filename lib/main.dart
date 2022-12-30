@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 // import libs
-// import 'api/sellerApi.dart';
-import 'controllers/viewer.dart';
+import 'api/sellerApi.dart';
+// import 'controllers/viewer.dart';
 
 void main() {
   // Viewer viewer = new Viewer();
@@ -11,6 +11,7 @@ void main() {
 
   // SellerApi sellerApi = SellerApi();
   // print(sellerApi.getsellers());
+
   runApp(const MyApp());
 }
 
@@ -59,8 +60,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  // SellerApi sellerApi = SellerApi();
-  Viewer view = new Viewer();
+  SellerApi sellerApi = SellerApi();
+  // Viewer view = new Viewer();
 
   void _incrementCounter() {
     setState(() {
@@ -72,9 +73,9 @@ class _MyHomePageState extends State<MyHomePage> {
       //
       //_counter++;
       //
-      // sellerApi.getsellers().then((result) => print('+++${result}'));
       //
-      print('---main---${view.sellers()}');
+      // print(sellerApi.getSellers());
+      sellerApi.getSellers().then((response) => print(response));
     });
   }
 
