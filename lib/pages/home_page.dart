@@ -17,21 +17,43 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home page/dashboard'),
+        title: Text('Home page'),
+        centerTitle: true,
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.menu),
+        //     onPressed: () {
+        //       _menuOpen(context);
+        //     },
+        //   ),
+        // ],
       ),
       body: Column(children: [
         Text('This is Homepage', style: TextStyle(color: Colors.blueGrey)),
         ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/sallers');
+              Navigator.pushNamed(context, '/sellers');
+
+              // Navigator.pushNamedAndRemoveUntil(
+              // context, '/sellers', (route) => true);
+
+              // Navigator.pushReplacementNamed(context, '/sellers');
             },
-            child: Text('Next'))
+            child: Text('Sellers List'))
       ]), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
 
-
+// void _menuOpen(BuildContext context) {
+//   Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text('Menu'),
+//         ),
+//         body: Text('OCHOBA'));
+//   }));
+// }
 
 
 

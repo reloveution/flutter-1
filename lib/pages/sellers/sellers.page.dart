@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 // import widgets
-import '../widgets/seller_widgets/sellers_list_widget.dart';
+import 'widgets/sellers_list.widget.dart';
 
 // import libs
-import '../api/seller_api.dart';
-import '../models/seller_model.dart';
+import '../../api/seller_api.dart';
+import '../../models/seller_model.dart';
 
-class SallersPage extends StatefulWidget {
-  const SallersPage({super.key});
-  final String title = 'Sallers page';
+class SellersPage extends StatefulWidget {
+  const SellersPage({super.key});
+  final String title = 'Sellers page';
 
   @override
-  State<SallersPage> createState() => _SallersPageState();
+  State<SellersPage> createState() => _SellersPageState();
 }
 
-class _SallersPageState extends State<SallersPage> {
+class _SellersPageState extends State<SellersPage> {
   // int _counter = 0;
   List<SellerModel> sellersList = [];
   SellerApi sellerApi = SellerApi();
