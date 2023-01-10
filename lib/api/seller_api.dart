@@ -1,7 +1,6 @@
-import 'package:rest/models/sellerModel.dart';
-
-import 'baseApiService.dart';
-import '../builders/sellersListBuilder.dart';
+import '../models/seller_model.dart';
+import './base_api_service.dart';
+import '../builders/sellers_list_builder.dart';
 
 class SellerApi extends BaseApiService {
   Uri sellersDefUrl = Uri.parse('http://localhost:3000/seller');

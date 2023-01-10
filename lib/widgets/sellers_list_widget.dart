@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/sellerModel.dart';
+import '../models/seller_model.dart';
 
 // class Todo {
 //   final String title;

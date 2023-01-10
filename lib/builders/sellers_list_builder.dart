@@ -1,5 +1,5 @@
-import '../api/sellerApi.dart';
-import '../models/sellerModel.dart';
+import '../api/seller_api.dart';
+import '../models/seller_model.dart';
 
 class SellersListBuilder {
   // build() {
