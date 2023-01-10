@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // import pages
 import './pages/home_page.dart';
+import './pages/sallers_page.dart';
 
 void main() {
   runApp(const App());
@@ -19,7 +20,11 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const HomePage(title: 'List of sellers'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/sallers': (context) => SallersPage()
+      },
     );
   }
 }
