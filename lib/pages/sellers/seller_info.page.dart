@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rest/models/seller_model.dart';
 
 // import widgets
-import './widgets/seller_item.widget.dart';
+import './widgets/seller.widget.dart';
 
 class SellerInfoPage extends StatefulWidget {
   const SellerInfoPage({
@@ -17,31 +17,38 @@ class SellerInfoPage extends StatefulWidget {
   State<SellerInfoPage> createState() => _SellerInfoPageState();
 }
 
+// class _SellerInfoPageState extends State<SellerInfoPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(widget.title
+//             // "Sallers page" ${widget._sellerModel.id}
+//             ),
+//       ),
+//       body: SellerWidget('Seller Id', widget._sellerModel.id),
+//     );
+//   }
+// }
+
 class _SellerInfoPageState extends State<SellerInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'SellerInfo Page', // "Sallers page" ${widget._sellerModel.id}
+        appBar: AppBar(
+          title: Text(widget.title
+              // "Sallers page" ${widget._sellerModel.id}
+              ),
         ),
-      ),
-      body: SellerWidget(widget._sellerModel),
-    );
+        body: ListView(
+          padding: const EdgeInsets.all(8),
+          children: [
+            SellerWidget('DB entry ID:', widget._sellerModel.id),
+            SellerWidget('Seller ID:', widget._sellerModel.sellerId),
+            SellerWidget('Name:', widget._sellerModel.sellerInfo?.firstName),
+            SellerWidget('Lastname:', widget._sellerModel.sellerInfo?.lastName),
+            SellerWidget('email:', widget._sellerModel.sellerInfo?.email)
+          ],
+        ));
   }
 }
-
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text(widget.title), // "Sallers page"
-  //     ),
-  //     body: SellersListWidget(sellersList),
-  //     floatingActionButton: FloatingActionButton(
-  //       onPressed: _incrementCounter,
-  //       tooltip: 'Increment',
-  //       child: const Icon(Icons.agriculture_rounded),
-  //     ), // This trailing comma makes auto-formatting nicer for build methods.
-  //   );
