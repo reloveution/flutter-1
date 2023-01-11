@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rest/models/seller_model.dart';
-// import './seller_widgets/'
+import './widgets/seller_edit.button.dart';
 
 // import widgets
 import './widgets/seller.widget.dart';
@@ -12,44 +12,49 @@ class SellerInfoPage extends StatefulWidget {
   }) : _sellerModel = sellerModel;
 
   final SellerModel _sellerModel;
-  final String title = 'SellerInfo page';
+  // final String title = 'SellerInfo page'; //final states,  not changable
 
   @override
   State<SellerInfoPage> createState() => _SellerInfoPageState();
 }
 
-// class _SellerInfoPageState extends State<SellerInfoPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title
-//             // "Sallers page" ${widget._sellerModel.id}
-//             ),
-//       ),
-//       body: SellerWidget('Seller Id', widget._sellerModel.id),
-//     );
-//   }
-// }
-
 class _SellerInfoPageState extends State<SellerInfoPage> {
+  /* Widget State -- Dynamic*/
+  /* Start variable initial states*/
+
+  bool editEnabled = false;
+  String title = 'SellerInfo page'; //final states,  not changable
+
+  /* End variable initial states*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title
+          title: Text(title
               // "Sallers page" ${widget._sellerModel.id}
               ),
         ),
         body: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            SellerWidget('DB entry ID:', widget._sellerModel.id),
-            SellerWidget('Seller ID:', widget._sellerModel.sellerId),
-            SellerWidget('Name:', widget._sellerModel.sellerInfo?.firstName),
-            SellerWidget('Lastname:', widget._sellerModel.sellerInfo?.lastName),
-            SellerWidget('email:', widget._sellerModel.sellerInfo?.email)
-            // SellerEditButtonWidget()
+            SellerWidget('DB entry ID:', widget._sellerModel.id, editEnabled),
+            SellerWidget(
+                'Seller ID:', widget._sellerModel.sellerId, editEnabled),
+            SellerWidget('Name:', widget._sellerModel.sellerInfo?.firstName,
+                editEnabled),
+            SellerWidget('Lastname:', widget._sellerModel.sellerInfo?.lastName,
+                editEnabled),
+            SellerWidget(
+                'email:', widget._sellerModel.sellerInfo?.email, editEnabled),
+            SellerEditButtonWidget(
+              callback: () {
+                editEnabled = true;
+              },
+              statusCallback: () {
+                title = 'YO';
+              },
+            )
           ],
         ));
   }

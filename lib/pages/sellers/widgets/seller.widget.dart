@@ -4,8 +4,12 @@ import '../../../models/seller_model.dart';
 class SellerWidget extends StatelessWidget {
   final String? sellerRecParam;
   final String? sellerRec;
-  // final bool? editEnabled;
-  SellerWidget(this.sellerRec, this.sellerRecParam /*, this.editEnabled*/);
+  final bool editEnabled;
+  SellerWidget(
+    this.sellerRec,
+    this.sellerRecParam,
+    this.editEnabled,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +17,7 @@ class SellerWidget extends StatelessWidget {
       padding: EdgeInsets.all(5.5),
       child: TextField(
           cursorWidth: 8.8,
-          // enabled:
-          // editEnabled /*(sellerRec != 'DB entry ID:') && (sellerRec != 'Seller ID:')*/,
+          enabled: editEnabled,
           decoration: InputDecoration(
               labelText: '${sellerRec} ${sellerRecParam}',
               border: InputBorder.none,
