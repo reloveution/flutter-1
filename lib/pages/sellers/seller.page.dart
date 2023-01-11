@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rest/models/seller_model.dart';
+// import './seller_widgets/'
 
 // import widgets
 import './widgets/seller.widget.dart';
@@ -48,6 +49,7 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
             SellerWidget('Name:', widget._sellerModel.sellerInfo?.firstName),
             SellerWidget('Lastname:', widget._sellerModel.sellerInfo?.lastName),
             SellerWidget('email:', widget._sellerModel.sellerInfo?.email)
+            // SellerEditButtonWidget()
           ],
         ));
   }

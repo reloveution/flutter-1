@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rest/pages/sellers/seller_info.page.dart';
+import 'package:rest/pages/sellers/seller.page.dart';
 import '../../../models/seller_model.dart';
 
 class SellersListWidget extends StatelessWidget {

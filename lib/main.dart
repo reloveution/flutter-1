@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // import pages
 import './pages/home_page.dart';
 import './pages/sellers/sellers.page.dart';
-import './pages/sellers/seller_info.page.dart';
+import 'pages/sellers/seller.page.dart';
 
 void main() {
   runApp(const App());
