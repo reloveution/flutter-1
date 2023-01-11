@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 // import pages
 import './pages/home_page.dart';
 import './pages/sellers/sellers.page.dart';
+import './pages/sellers/seller_info.page.dart';
 
 void main() {
   runApp(const App());
@@ -23,7 +24,8 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
-        '/sellers': (context) => SellersPage()
+        '/sellers': (context) => SellersPage(),
+        // '/sellersInfo': (context) => SellerInfoPage()
       },
     );
   }

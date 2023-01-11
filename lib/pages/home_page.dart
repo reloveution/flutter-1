@@ -1,12 +1,9 @@
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-// import pages
-// import './sallers_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-  final String title = 'Home page/dashboard';
+  final String title = 'Home page';
 
   @override
   State<HomePage> createState() => _HomePageState();
