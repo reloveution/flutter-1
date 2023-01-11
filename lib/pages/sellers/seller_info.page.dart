@@ -23,10 +23,25 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'SellerInfo Page${widget._sellerModel.id}', // "Sallers page"
+          'SellerInfo Page', // "Sallers page" ${widget._sellerModel.id}
         ),
       ),
-      // body: print(_sellerModel.Id),
+      body: SellerWidget(widget._sellerModel),
     );
   }
 }
+
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text(widget.title), // "Sallers page"
+  //     ),
+  //     body: SellersListWidget(sellersList),
+  //     floatingActionButton: FloatingActionButton(
+  //       onPressed: _incrementCounter,
+  //       tooltip: 'Increment',
+  //       child: const Icon(Icons.agriculture_rounded),
+  //     ), // This trailing comma makes auto-formatting nicer for build methods.
+  //   );
