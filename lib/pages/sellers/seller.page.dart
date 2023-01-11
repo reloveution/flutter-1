@@ -38,23 +38,27 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
         body: ListView(
           padding: const EdgeInsets.all(8),
           children: [
-            SellerWidget('DB entry ID:', widget._sellerModel.id, editEnabled),
-            SellerWidget(
-                'Seller ID:', widget._sellerModel.sellerId, editEnabled),
+            SellerWidget('DB entry ID:', widget._sellerModel.id, false),
+            SellerWidget('Seller ID:', widget._sellerModel.sellerId, false),
             SellerWidget('Name:', widget._sellerModel.sellerInfo?.firstName,
                 editEnabled),
             SellerWidget('Lastname:', widget._sellerModel.sellerInfo?.lastName,
                 editEnabled),
             SellerWidget(
                 'email:', widget._sellerModel.sellerInfo?.email, editEnabled),
-            SellerEditButtonWidget(
-              callback: () {
-                editEnabled = true;
-              },
-              statusCallback: () {
-                title = 'YO';
-              },
-            )
+            if (!editEnabled)
+              SellerEditButtonWidget(
+                callback: () {
+                  setState(() {
+                    editEnabled = !editEnabled;
+                  });
+                },
+                statusCallback: (stroke) {
+                  setState(() {
+                    title = stroke;
+                  });
+                },
+              )
           ],
         ));
   }
