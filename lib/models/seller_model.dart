@@ -1,15 +1,5 @@
 import 'dart:convert';
 
-// class SellersList {
-// //   //--// Map<List, SellerModel>? sellersList;
-//   // Map<int, SellerModel>? sellersList;
-//   List<SellerModel>? sellersList;
-
-//   SellersList() {
-//     sellersList = [];
-//   }
-// }
-
 class SellerModel {
   SellerInfo? sellerInfo;
   String? id;
@@ -34,6 +24,15 @@ class SellerModel {
     data['sellerId'] = this.sellerId;
     return data;
   }
+
+  Map<String, String> toFormatJson() {
+    final Map<String, String> data = Map<String, String>();
+    data['id'] = this.id ?? '';
+    data['firstName'] = this.sellerInfo?.firstName ?? '';
+    data['lastName'] = this.sellerInfo?.lastName ?? '';
+    data['email'] = this.sellerInfo?.email ?? '';
+    return data;
+  }
 }
 
 class SellerInfo {
@@ -49,11 +48,11 @@ class SellerInfo {
     email = json['email'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['firstName'] = this.firstName;
-    data['lastName'] = this.lastName;
-    data['email'] = this.email;
+  Map<String, String> toJson() {
+    final Map<String, String> data = Map<String, String>();
+    data['firstName'] = this.firstName ?? '';
+    data['lastName'] = this.lastName ?? '';
+    data['email'] = this.email ?? '';
     return data;
   }
 }
