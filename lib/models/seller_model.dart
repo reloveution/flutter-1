@@ -7,10 +7,21 @@ class SellerModel {
 
   SellerModel({this.sellerInfo, this.id, this.sellerId});
 
+  SellerModel copyWith({String? firstName, String? lastName, String? email}) {
+    return SellerModel(
+        sellerInfo: sellerInfo?.copyWith(
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+        ),
+        id: id,
+        sellerId: sellerId);
+  }
+
   SellerModel.fromJson(Map<String, dynamic> json) {
     sellerInfo = json['sellerInfo'] != null
         ? SellerInfo.fromJson(json['sellerInfo'])
-        : null;
+        : SellerInfo();
     id = json['id'];
     sellerId = json['sellerId'];
   }
@@ -41,6 +52,14 @@ class SellerInfo {
   String? email;
 
   SellerInfo({this.firstName, this.lastName, this.email});
+
+  SellerInfo copyWith({String? firstName, String? lastName, String? email}) {
+    return SellerInfo(
+      email: email ?? this.email,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+    );
+  }
 
   SellerInfo.fromJson(Map<String, dynamic> json) {
     firstName = json['firstName'];
