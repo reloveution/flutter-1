@@ -8,20 +8,25 @@ import '../../api/seller_api.dart';
 import '../../models/seller_model.dart';
 
 class SellersPage extends StatefulWidget {
-  const SellersPage({super.key});
   final String title = 'Sellers page';
+  // final bool reloadSellersList;
+  // final Function(bool value) _onSellerChanged;
+
+  const SellersPage({
+    super.key,
+    // required Function(bool value) onSellerChanged,
+  }); //  : //_onSellerChanged = onSellerChanged,
+  // reloadSellersList = value;
 
   @override
   State<SellersPage> createState() => _SellersPageState();
 }
 
-class _SellersPageState extends State<SellersPage> {
-  // int _counter = 0;
-  List<SellerModel> sellersList = [];
+class _SellersPageState extends State<SellersPage> with RouteAware {
   SellerApi sellerApi = SellerApi();
-  // Viewer view = new Viewer();
+  List<SellerModel> sellersList = [];
 
-  void _incrementCounter() {
+  void _fillSellersList() {
     sellerApi.getSellers().then((response) {
       setState(() {
         sellersList = response;
@@ -30,14 +35,42 @@ class _SellersPageState extends State<SellersPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _fillSellersList();
+  }
+
+  @override
+  void didPopNext() {
+    _fillSellersList();
+  }
+
+  @override
+  void didPush() {
+    _fillSellersList();
+  }
+
+  // @override
+  // void didPopNext() {
+  //   super.didPopNext();
+  //   _incrementCounter2();
+  // }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title), // "Sallers page"
       ),
-      body: SellersListWidget(sellersList),
+      body: SellersListWidget(
+        sellersListIn: sellersList,
+        onSellerChanged: (sellerModel) {
+          _fillSellersList();
+        },
+      ),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _fillSellersList,
         tooltip: 'Increment',
         child: const Icon(Icons.agriculture_rounded),
       ), // This trailing comma makes auto-formatting nicer for build methods.

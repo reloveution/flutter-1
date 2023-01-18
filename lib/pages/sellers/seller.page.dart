@@ -4,17 +4,19 @@ import './widgets/seller_edit.button.dart';
 import './widgets/seller_delete.button.dart';
 import '../../api/seller_api.dart';
 
-// import widgets
 import './widgets/seller.widget.dart';
 
 class SellerInfoPage extends StatefulWidget {
   final SellerModel _sellerModel;
   final String? _id;
+  final Function(SellerModel smi) _onSellerChanged;
 
   SellerInfoPage({
     super.key,
     required SellerModel sellerModel,
+    required Function(SellerModel smi) onSellerChanged,
   })  : _sellerModel = sellerModel,
+        _onSellerChanged = onSellerChanged,
         _id = sellerModel.id;
 
   @override
@@ -32,6 +34,10 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
   String email = '';
   String id = '';
   String sellerId = '';
+
+  void _stepBack() {
+    Navigator.of(context).pop();
+  }
 
   @override
   void initState() {
@@ -122,42 +128,34 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
                   });
                 },
               ),
-            // if (!sellerDeleted)
-            //   SellerDeleteButtonWidget(
-            //     // deleteSellerCallback: () {
-            //     //   setState(() {
-            //     //     SellerApi sellerApi = new SellerApi();
-            //     //     sellerApi.deleteSeller(widget._sellerModel.id);
-            //     //   });
-            //     // }
-            //     callback: () {
-            //       setState(() {
-            //         sellerDeleted = !sellerDeleted;
-            //       });
-            //     },
-            //     statusCallback: (stroke) {
-            //       setState(() {
-            //         title = stroke;
-            //       });
-            //     },
-            //   ),
+            if (isEditable)
+              ElevatedButton(
+                  onPressed: () {
+                    if ((widget._sellerModel.sellerInfo?.email != email) ||
+                        (widget._sellerModel.sellerInfo?.firstName !=
+                            firstName) ||
+                        (widget._sellerModel.sellerInfo?.lastName !=
+                            lastName)) {
+                      SellerApi sellerApi = SellerApi();
+                      final SellerModel smi = widget._sellerModel.copyWith(
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                      );
+                      sellerApi.patchSeller(smi);
+                      widget._onSellerChanged(smi);
+                      _stepBack();
+                      ////////////////////////////////////////////////////////////
+                    }
+                  },
+                  child: Text('Patch', style: TextStyle(fontSize: 22))),
             ElevatedButton(
                 onPressed: () {
                   SellerApi sellerApi = SellerApi();
                   sellerApi.deleteSeller(widget._sellerModel.id);
+                  _stepBack();
                 },
                 child: Text('Delete', style: TextStyle(fontSize: 22))),
-            ElevatedButton(
-                onPressed: () {
-                  SellerApi sellerApi = SellerApi();
-                  final SellerModel smi = widget._sellerModel.copyWith(
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                  );
-                  sellerApi.patchSeller(smi);
-                },
-                child: Text('Patch', style: TextStyle(fontSize: 22))),
           ],
         ));
   }

@@ -5,7 +5,15 @@ import '../../../models/seller_model.dart';
 class SellersListWidget extends StatelessWidget {
   final List<SellerModel> sellersList;
 
-  SellersListWidget(this.sellersList);
+  final Function(SellerModel sellerModel) _onSellerChanged;
+
+  onSellerChanged() {}
+
+  SellersListWidget({
+    required List<SellerModel> sellersListIn,
+    required Function(SellerModel sellerModel) onSellerChanged,
+  })  : sellersList = sellersListIn,
+        _onSellerChanged = onSellerChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -13,33 +21,21 @@ class SellersListWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         itemCount: this.sellersList.length,
         itemBuilder: (BuildContext context, int index) {
-          // return Text('ID ${this.sellersList[index].sellerInfo?.email}',
-          // style: TextStyle(fontSize: 22));
-
           return ElevatedButton(
               onPressed: () {
                 SellerModel sellerModel = this.sellersList[index];
                 MaterialPageRoute route = MaterialPageRoute(
                   builder: (context) {
-                    return SellerInfoPage(sellerModel: sellerModel);
+                    return SellerInfoPage(
+                        sellerModel: sellerModel,
+                        onSellerChanged: ((smi) {
+                          _onSellerChanged(smi);
+                        }));
                   },
                 );
                 Navigator.push(context, route);
-                // Navigator.pushNamed(context, '/sellersInfo');
-                // Navigator.pushNamed(
-                //   context,
-                //   '/sellersInfo',
-                //   arguments: <String, SellerModel>{
-                //     // 'rec ID': this.sellersList[index].id,
-                //     'seller': this.sellersList[index]
-                //   },
-                // );
-                // Navigator.pushNamedAndRemoveUntil(
-                // context, '/sellers', (route) => true);
-
-                // Navigator.pushReplacementNamed(context, '/sellers');
               },
-              child: Text('ID ${this.sellersList[index].sellerInfo?.email}',
+              child: Text('email: ${this.sellersList[index].sellerInfo?.email}',
                   style: TextStyle(fontSize: 22)));
         });
   }

@@ -15,11 +15,7 @@ class SellerDeleteButtonWidget extends StatelessWidget {
 
   void _deleteSeller(String id) {
     SellerApi sellerApi = new SellerApi();
-    sellerApi.deleteSeller(id).then((response) {
-      // setState(() {
-      //   sellersList = response;
-      // });
-    });
+    sellerApi.deleteSeller(id).then((response) {});
   }
 
   @override
@@ -27,10 +23,6 @@ class SellerDeleteButtonWidget extends StatelessWidget {
     return ElevatedButton(
         onPressed: () {
           print('khui');
-          // _deleteSeller('');
-
-          // _callback();
-          // _statusCallback('Deleted');
         },
         child: Text('Delete', style: TextStyle(fontSize: 22)));
   }

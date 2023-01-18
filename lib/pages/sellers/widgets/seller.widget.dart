@@ -39,20 +39,10 @@ class _SellerWidgetState extends State<SellerWidget> {
     });
   }
 
-  // _SellerWidgetState(this.sellerRec, this.sellerRecParam, this.editEnabled,
-  // {super.key, Function(String value)? textBack})
-  // : _textBack = textBack;
-
   @override
   void dispose() {
     _textFieldController.dispose();
   }
-
-  // @override
-  // void initState(sellerRecParam) {
-  //   _textFieldController.text = sellerRecParam;
-  //   _textFieldController.addListener(_changeText);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +51,7 @@ class _SellerWidgetState extends State<SellerWidget> {
         child: TextField(
           cursorWidth: 8.8,
           enabled: widget._isEditable,
-
-/////////////////////////////
           controller: _textFieldController,
-/////////////////////////////////
           decoration: InputDecoration(
             labelText: widget._title,
             border: InputBorder.none,
@@ -73,74 +60,8 @@ class _SellerWidgetState extends State<SellerWidget> {
             filled: true,
           ),
           onChanged: (value) {
-            widget._onChanged!(value);
-            // if (_textBack != null) {
-            //   _textBack!(value);
-            // }
+            widget._onChanged(value);
           },
         ));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-// class SellerWidget extends StatelessWidget {
-//   String? sellerRecParam;
-//   final String? sellerRec;
-//   final bool editEnabled;
-//   final Function(String value)? _textBack;
-//   final _textFieldController = TextEditingController();
-
-//   _changeText() {
-//     setState(() => _name = _textFieldController.text);
-//   }
-
-//   SellerWidget(this.sellerRec, this.sellerRecParam, this.editEnabled,
-//       {super.key, Function(String value)? textBack})
-//       : _textBack = textBack;
-
-//   @override
-//   void dispose() {
-//     _textFieldController.dispose();
-//   }
-
-//   @override
-//   void initState(sellerRecParam) {
-//     _textFieldController.text = sellerRecParam;
-//     _textFieldController.addListener(_changeText);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//         padding: EdgeInsets.all(5.5),
-//         child: TextField(
-//           cursorWidth: 8.8,
-//           enabled: editEnabled,
-
-// /////////////////////////////
-//           controller: _textFieldController,
-// /////////////////////////////////
-//           decoration: InputDecoration(
-//             labelText: '${sellerRec} ${sellerRecParam}',
-//             border: InputBorder.none,
-//             hintText: '${sellerRec} ${sellerRecParam}',
-//             fillColor: Colors.grey,
-//             filled: true,
-//           ),
-//           onSubmitted: (value) {
-//             if (_textBack != null) {
-//               _textBack!(value);
-//             }
-//           },
-//         ));
-//   }
-// }
