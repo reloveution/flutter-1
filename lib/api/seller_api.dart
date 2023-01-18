@@ -22,13 +22,8 @@ class SellerApi extends BaseApiService {
 
   Future<dynamic> patchSeller(SellerModel sellerModel) {
     Map<String, String> body = sellerModel.toFormatJson();
-
-    // String str = json.encode(body);
-    // print(str);
-
     return super.patch(sellersDefUri, body).then((response) {
       print('selllerApi: ${response}');
-      // if (id == response.body. )
     });
   }
 }

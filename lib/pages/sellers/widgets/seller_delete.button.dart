@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rest/pages/sellers/seller.page.dart';
-// import '../../../models/seller_model.dart';
 import '../../../api/seller_api.dart';
 
 class SellerDeleteButtonWidget extends StatelessWidget {

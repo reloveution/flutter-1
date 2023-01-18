@@ -9,14 +9,10 @@ import '../../models/seller_model.dart';
 
 class SellersPage extends StatefulWidget {
   final String title = 'Sellers page';
-  // final bool reloadSellersList;
-  // final Function(bool value) _onSellerChanged;
 
   const SellersPage({
     super.key,
-    // required Function(bool value) onSellerChanged,
-  }); //  : //_onSellerChanged = onSellerChanged,
-  // reloadSellersList = value;
+  });
 
   @override
   State<SellersPage> createState() => _SellersPageState();
@@ -50,17 +46,11 @@ class _SellersPageState extends State<SellersPage> with RouteAware {
     _fillSellersList();
   }
 
-  // @override
-  // void didPopNext() {
-  //   super.didPopNext();
-  //   _incrementCounter2();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title), // "Sallers page"
+        title: Text(widget.title),
       ),
       body: SellersListWidget(
         sellersListIn: sellersList,
@@ -68,12 +58,11 @@ class _SellersPageState extends State<SellersPage> with RouteAware {
           _fillSellersList();
         },
       ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: _fillSellersList,
         tooltip: 'Increment',
         child: const Icon(Icons.agriculture_rounded),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

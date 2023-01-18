@@ -16,24 +16,12 @@ class BaseApiService {
     print('uri: $uri');
     uri = Uri.parse(uri.toString() + '/?id=$id');
     return http.delete(uri).then((response) {
-      final temp = jsonDecode(response.body);
-      // print('response.body: ${response.body}');
       return response.body;
     });
   }
 
   Future<dynamic> patch(Uri uri, Map<String, String> parameters) {
-    // print(id);
-    // print('uri in patch: $uri');
-    // print('info: $info');
-    print(uri);
-    print(parameters);
-
-    // uri = Uri.parse(uri.toString() + '/?id=$id');
     return http.patch(uri, body: parameters).then((response) {
-      // print('response $response');
-      // final temp = jsonDecode(response);
-      // print(response.body);
       return response.body;
     });
   }
