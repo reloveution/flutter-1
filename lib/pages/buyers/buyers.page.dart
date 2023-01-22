@@ -1,63 +1,66 @@
 import 'package:flutter/material.dart';
 
 // import widgets
-import 'widgets/sellers_list.widget.dart';
+import 'widgets/buyers_list.widget.dart';
 
 // import dialogs
 import '../dialogs/resultGetDbDialod.dart';
 
 // import libs
-import '../../api/seller_api.dart';
-import '../../models/seller_model.dart';
+// import '../../api/buyer_api.dart';
+import '../../api/buyer_dio_api.dart';
+import '../../models/buyer_model.dart';
 
-class SellersPage extends StatefulWidget {
-  final String title = 'Sellers page';
+class BuyersPage extends StatefulWidget {
+  final String title = 'Buyers page';
 
-  const SellersPage({
+  const BuyersPage({
     super.key,
   });
 
   @override
-  State<SellersPage> createState() => _SellersPageState();
+  State<BuyersPage> createState() => _BuyersPageState();
 }
 
-class _SellersPageState extends State<SellersPage> with RouteAware {
-  SellerApi sellerApi = SellerApi();
-  List<SellerModel> sellersList = [];
+class _BuyersPageState extends State<BuyersPage> with RouteAware {
+  // BuyerApi buyerApi = BuyerApi();
+  BuyerApiByDio buyerApi = BuyerApiByDio();
+  List<BuyerModel> buyersList = [];
   dynamic failMsg = [];
 
-  void _fillSellersList() {
-    sellerApi.getSellers().then((response) {
-      setState(() {
-        sellersList = response;
-      });
-    });
-  }
+  // void _fillBuyersList() {
+  //   buyerApi.getBuyers().then((response) {
+  //     setState(() {
+  //       buyersList = response;
+  //     });
+  //   });
+  // }///////////////////
 
-  void _fillSellersListWithCallback() {
-    sellerApi.getSellersWithCallback(
-      (_sellersList) => {
-        setState(() {
-          sellersList = _sellersList;
-        }),
-      },
-      (msg) => {
-        setState(() {
-          failMsg = msg;
-          sellersList = [];
-        }),
-      },
-    );
-  }
+  // void _fillBuyersListWithCallback() {
+  //   buyerApi.getBuyersWithCallback(
+  //     (_buyersList) => {
+  //       setState(() {
+  //         buyersList = _buyersList;
+  //       }),
+  //     },
+  //     (msg) => {
+  //       setState(() {
+  //         failMsg = msg;
+  //         buyersList = [];
+  //       }),
+  //     },
+  //   );
+  // }///////////////////
 
-  void _fillSellersListWith2Callbacks() {
-    sellerApi.getSellersWith2Callbacks(
-      (slrsList, msg) => {
+  void _fillBuyersListWith2Callbacks() {
+    // buyerApi.getBuyersWith2Callbacks(
+    buyerApi.getBuyersWith2Callbacks(
+      (byrsList, msg) => {
         setState(() {
           if (msg != null) {
             failMsg = msg;
           } else {
-            sellersList = slrsList ?? [];
+            buyersList = byrsList ?? [];
           }
         })
       },
@@ -100,12 +103,11 @@ class _SellersPageState extends State<SellersPage> with RouteAware {
 //         });
 //   }
 
-  @override
-  void initState() {
-    super.initState();
-    _fillSellersList();
-  }
-
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _fillBuyersList();
+  // }///////////////////
   @override
   void didPopNext() {
     // _fillSellersList();
@@ -122,17 +124,17 @@ class _SellersPageState extends State<SellersPage> with RouteAware {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SellersListWidget(
-        sellersListIn: sellersList,
-        onSellerChanged: (sellerModel) {
+      body: BuyersListWidget(
+        buyersListIn: buyersList,
+        onBuyerChanged: (buyerModel) {
           // _fillSellersList();
-          _fillSellersListWithCallback();
+          // _fillBuyersListWithCallback();///////////////////
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // _fillSellersListWithCallback();
-          _fillSellersListWith2Callbacks();
+          _fillBuyersListWith2Callbacks();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.agriculture_rounded),

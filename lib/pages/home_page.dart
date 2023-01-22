@@ -22,7 +22,12 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.pushNamed(context, '/sellers');
             },
-            child: Text('Sellers List'))
+            child: Text('Sellers List')),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/buyers');
+            },
+            child: Text('Buyers List'))
       ]), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

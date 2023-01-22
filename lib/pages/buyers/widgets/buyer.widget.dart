@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SellerWidget extends StatefulWidget {
+class BuyerWidget extends StatefulWidget {
   final String _title;
   final String _value;
   final bool _isEditable;
   final Function(String value) _onChanged;
 
-  const SellerWidget({
+  const BuyerWidget({
     super.key,
     required String title,
     required String value,
@@ -18,10 +18,10 @@ class SellerWidget extends StatefulWidget {
         _onChanged = onChanged;
 
   @override
-  State<SellerWidget> createState() => _SellerWidgetState();
+  State<BuyerWidget> createState() => _BuyerWidgetState();
 }
 
-class _SellerWidgetState extends State<SellerWidget> {
+class _BuyerWidgetState extends State<BuyerWidget> {
   final TextEditingController _textFieldController = TextEditingController();
 
   @override

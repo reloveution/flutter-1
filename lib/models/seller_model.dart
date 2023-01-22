@@ -18,12 +18,14 @@ class SellerModel {
         sellerId: sellerId);
   }
 
-  SellerModel.fromJson(Map<String, dynamic> json) {
-    sellerInfo = json['sellerInfo'] != null
-        ? SellerInfo.fromJson(json['sellerInfo'])
-        : SellerInfo();
-    id = json['id'];
-    sellerId = json['sellerId'];
+  SellerModel.fromJson(Map<String, dynamic>? json) {
+    if (json != null) {
+      sellerInfo = json['sellerInfo'] != null
+          ? SellerInfo.fromJson(json['sellerInfo'])
+          : SellerInfo();
+      id = json['id'];
+      sellerId = json['sellerId'];
+    }
   }
 
   Map<String, dynamic> toJson() {

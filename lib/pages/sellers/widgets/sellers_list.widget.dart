@@ -7,8 +7,6 @@ class SellersListWidget extends StatelessWidget {
 
   final Function(SellerModel sellerModel) _onSellerChanged;
 
-  onSellerChanged() {}
-
   SellersListWidget({
     required List<SellerModel> sellersListIn,
     required Function(SellerModel sellerModel) onSellerChanged,

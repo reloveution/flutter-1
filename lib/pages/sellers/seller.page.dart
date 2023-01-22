@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rest/models/seller_model.dart';
+import 'package:rest/pages/dialogs/resultGetDbDialod.dart';
 import './widgets/seller_edit.button.dart';
 import './widgets/seller_delete.button.dart';
 import '../../api/seller_api.dart';
@@ -39,6 +40,22 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
     Navigator.of(context).pop();
   }
 
+  // void _stepBack2() {
+  //   Navigator.of(context).pop();
+  //   Navigator.of(context).pop();
+  // }
+
+  void showDialogWithResult(String _titleText, String _contentText) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return ResultGetDbDialog(
+            titleText: _titleText, contentText: _contentText);
+      },
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -52,16 +69,7 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(title), actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.edit),
-            onPressed: () {
-              setState(() {
-                isEditable = !isEditable;
-              });
-            },
-          ),
-        ]),
+        appBar: AppBar(title: Text(title)),
         body: ListView(
           padding: const EdgeInsets.all(8),
           children: [
@@ -142,20 +150,63 @@ class _SellerInfoPageState extends State<SellerInfoPage> {
                         lastName: lastName,
                         email: email,
                       );
-                      sellerApi.patchSeller(smi);
+                      // sellerApi.patchSeller(smi);
+                      sellerApi.patchSellerWith2Callbacks(smi,
+                          (response, errResp) {
+                        if (response == null) {
+                          showDialogWithResult('Fail', errResp);
+                        } else {
+                          showDialogWithResult('Everything', 'success');
+                        }
+                      });
                       widget._onSellerChanged(smi);
-                      _stepBack();
-                      ////////////////////////////////////////////////////////////
+                      // showDialogWithResult('Chekiryak', 'Myak');
+
+/////////////////////////////////////////////////
+                      // _stepBack();
                     }
+///////////////////////////////////////////////
                   },
                   child: Text('Patch', style: TextStyle(fontSize: 22))),
+            // children: ResultGetDbDialog();
             ElevatedButton(
                 onPressed: () {
                   SellerApi sellerApi = SellerApi();
                   sellerApi.deleteSeller(widget._sellerModel.id);
+                  final SellerModel smi = widget._sellerModel.copyWith(
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                  );
+                  widget._onSellerChanged(smi);
                   _stepBack();
                 },
                 child: Text('Delete', style: TextStyle(fontSize: 22))),
+//////////////// popup dialog button
+            // TextButton(
+            //   onPressed: (() {
+            //     showDialogWithResult();
+            //   }
+
+            //       // () => showDialog<String>(
+            //       //   context: context,
+            //       //   builder: (BuildContext context) => AlertDialog(
+            //       //     title: const Text('AlertDialog Title'),
+            //       //     content: const Text('AlertDialog description'),
+            //       //     actions: <Widget>[
+            //       //       TextButton(
+            //       //         onPressed: () => Navigator.pop(context, 'Cancel'),
+            //       //         child: const Text('Cancel'),
+            //       //       ),
+            //       //       TextButton(
+            //       //         onPressed: () => Navigator.pop(context, 'OK'),
+            //       //         child: const Text('OK'),
+            //       //       ),
+            //       //     ],
+            //       //   ),
+            //       ),
+            //   child: const Text('Show Dialog'),
+            // )
           ],
         ));
   }
