@@ -3,7 +3,8 @@ import 'package:rest/models/buyer_model.dart';
 import 'package:rest/pages/dialogs/resultGetDbDialod.dart';
 import './widgets/buyer_edit.button.dart';
 import './widgets/buyer_delete.button.dart';
-import '../../api/buyer_api.dart';
+// import '../../api/buyer_api.dart';
+import '../../api/buyer_dio_api.dart';
 
 import './widgets/buyer.widget.dart';
 
@@ -159,6 +160,9 @@ class _BuyerInfoPageState extends State<BuyerInfoPage> {
                         dob: DateTime.parse(dob),
                         phone: phone,
                       );
+                      //////////////////////////////////
+                      print(bmi);
+                      //////////////////////////////////
                       buyerApi.patchBuyerWith2Callbacks(bmi,
                           (response, errResp) {
                         if (response == null) {
@@ -174,6 +178,7 @@ class _BuyerInfoPageState extends State<BuyerInfoPage> {
                   child: Text('Patch', style: TextStyle(fontSize: 22))),
             ElevatedButton(
                 onPressed: () {
+                  /*
                   BuyerApi buyerApi = BuyerApi();
                   buyerApi.deleteBuyer(widget._buyerModel.id);
                   final BuyerModel bmi = widget._buyerModel.copyWith(
@@ -184,7 +189,7 @@ class _BuyerInfoPageState extends State<BuyerInfoPage> {
                     dob: DateTime.parse(dob),
                   );
                   widget._onBuyerChanged(bmi);
-                  _stepBack();
+                  _stepBack();*/
                 },
                 child: Text('Delete', style: TextStyle(fontSize: 22))),
           ],

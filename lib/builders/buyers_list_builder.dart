@@ -10,3 +10,14 @@ class BuyersListBuilder {
     return buyersList;
   }
 }
+
+class BuyersListBuilderForDio {
+  static List<BuyerModel> build(List<Map> response) {
+    List data = response ?? [];
+    List<BuyerModel> buyersList = [];
+    for (int i = 0; i < data.length; i++) {
+      buyersList.add(BuyerModel.fromJson(data[i]));
+    }
+    return buyersList;
+  }
+}

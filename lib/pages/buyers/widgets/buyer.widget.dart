@@ -39,11 +39,6 @@ class _BuyerWidgetState extends State<BuyerWidget> {
     });
   }
 
-  // @override
-  // void dispose() {
-  //   _textFieldController.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Padding(

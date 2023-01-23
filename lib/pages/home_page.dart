@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: Column(children: [
-        Text('This is Homepage', style: TextStyle(color: Colors.blueGrey)),
+        Text('This is Homepage', style: TextStyle(color: Colors.amber)),
         ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, '/sellers');

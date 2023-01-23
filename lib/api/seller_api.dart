@@ -27,10 +27,8 @@ class SellerApi extends BaseApiService {
     super.getWith2Callbacks(
       sellersDefUri,
       (resp, errResp) {
-        // var sellers = SellersListBuilder.build(resp);
-
         callback(
-          SellersListBuilder.build(resp) /*sellers*/,
+          SellersListBuilder.build(resp),
           errResp,
         );
       },
@@ -39,9 +37,7 @@ class SellerApi extends BaseApiService {
 
   Future<dynamic> patchSeller(SellerModel sellerModel) {
     Map<String, String> body = sellerModel.toFormatJson();
-    return super.patch(sellersDefUri, body).then((response) {
-      print('selllerApi: ${response}');
-    });
+    return super.patch(sellersDefUri, body).then((response) {});
   }
 
   void patchSellerWith2Callbacks(SellerModel sellerModel,
@@ -50,11 +46,6 @@ class SellerApi extends BaseApiService {
       sellersDefUri,
       sellerModel.toFormatJson(),
       (resp, errResp) {
-        // if (resp != null) {
-        //   callback(SellerModel.fromJson(resp), null);
-        // } else {
-        //   callback(null, errResp);
-        // }
         callback(resp != null ? SellerModel.fromJson(resp) : null, errResp);
       },
     );

@@ -27,10 +27,8 @@ class BuyerApi extends BaseApiService {
     super.getWith2Callbacks(
       buyersDefUri,
       (resp, errResp) {
-        // var sellers = SellersListBuilder.build(resp);
-
         callback(
-          BuyersListBuilder.build(resp) /*sellers*/,
+          BuyersListBuilder.build(resp),
           errResp,
         );
       },
@@ -46,19 +44,12 @@ class BuyerApi extends BaseApiService {
 
   void patchBuyerWith2Callbacks(BuyerModel buyerModel,
       Function(BuyerModel? response, dynamic errResp) callback) {
-    // print('from prePatchBuyerApi : $buyerModel');
-    // print('from prePatchBuyerApi json: ${buyerModel.toFormatJson()}');
     super.patchWith2Callbacks(
       buyersDefUri,
       buyerModel.toFormatJson(),
       (resp, errResp) {
         print('error from buyer Api: $errResp');
         print(BuyerModel.fromJson(resp));
-        // if (resp != null) {
-        //   callback(SellerModel.fromJson(resp), null);
-        // } else {
-        //   callback(null, errResp);
-        // }
         callback(resp != null ? BuyerModel.fromJson(resp) : null, errResp);
       },
     );

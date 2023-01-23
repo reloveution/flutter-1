@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class BuyerModel {
   String? id;
   String? firstName;

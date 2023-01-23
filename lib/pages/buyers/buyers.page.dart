@@ -24,7 +24,7 @@ class BuyersPage extends StatefulWidget {
 
 class _BuyersPageState extends State<BuyersPage> with RouteAware {
   // BuyerApi buyerApi = BuyerApi();
-  BuyerApiByDio buyerApi = BuyerApiByDio();
+  BuyerApi buyerApi = BuyerApi();
   List<BuyerModel> buyersList = [];
   dynamic failMsg = [];
 
@@ -53,7 +53,6 @@ class _BuyersPageState extends State<BuyersPage> with RouteAware {
   // }///////////////////
 
   void _fillBuyersListWith2Callbacks() {
-    // buyerApi.getBuyersWith2Callbacks(
     buyerApi.getBuyersWith2Callbacks(
       (byrsList, msg) => {
         setState(() {
@@ -67,47 +66,13 @@ class _BuyersPageState extends State<BuyersPage> with RouteAware {
     );
   }
 
-// void _showSimpleDialog() {
-//     showDialog(
-//         context: context,
-//         builder: (context) {
-//           return SimpleDialog(
-//             title: Text('Chosse an Option'),
-//             children: <Widget>[
-//               SimpleDialogOption(
-//                 onPressed: () {
-//                   _dismissDialog();
-//                 },
-//                 child: const Text('Option 1'),
-//               ),
-//               SimpleDialogOption(
-//                 onPressed: () {
-//                   _dismissDialog();
-//                 },
-//                 child: const Text('Option 2'),
-//               ),
-//               SimpleDialogOption(
-//                 onPressed: () {
-//                   _dismissDialog();
-//                 },
-//                 child: const Text('Option 3'),
-//               ),
-//               SimpleDialogOption(
-//                 onPressed: () {
-//                   _dismissDialog();
-//                 },
-//                 child: const Text('Option 4'),
-//               ),
-//             ],
-//           );
-//         });
-//   }
+  @override
+  void initState() {
+    super.initState();
+    // _fillBuyersList();
+    _fillBuyersListWith2Callbacks();
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _fillBuyersList();
-  // }///////////////////
   @override
   void didPopNext() {
     // _fillSellersList();
@@ -129,6 +94,7 @@ class _BuyersPageState extends State<BuyersPage> with RouteAware {
         onBuyerChanged: (buyerModel) {
           // _fillSellersList();
           // _fillBuyersListWithCallback();///////////////////
+          _fillBuyersListWith2Callbacks();
         },
       ),
       floatingActionButton: FloatingActionButton(

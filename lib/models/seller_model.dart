@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class SellerModel {
   SellerInfo? sellerInfo;
   String? id;
