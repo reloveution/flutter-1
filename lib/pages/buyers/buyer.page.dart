@@ -163,7 +163,8 @@ class _BuyerInfoPageState extends State<BuyerInfoPage> {
                       //////////////////////////////////
                       print(bmi);
                       //////////////////////////////////
-                      buyerApi.patchBuyerWith2Callbacks(bmi,
+                      // buyerApi.patchBuyerWith2Callbacks(bmi,
+                      buyerApi.patchBuyerWith2CallbacksWithTryCatch(bmi,
                           (response, errResp) {
                         if (response == null) {
                           showDialogWithResult('Fail', errResp.toString());

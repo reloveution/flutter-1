@@ -41,6 +41,25 @@ class BuyerApi {
 //     });
 //   }
 
+  void patchBuyerWith2CallbacksWithTryCatch(BuyerModel buyerModel,
+      Function(BuyerModel? response, dynamic errResp) callback) {
+    Dio dio = new Dio();
+    try {
+      dio.patchUri(buyersDefUri, data: buyerModel).then((value) {
+        print('watafak');
+        if (value.data != null) {
+          // throw 'fak mafak';
+        }
+        callback(BuyerModel.fromJson(value.data), null);
+      }).catchError((onError) {
+        callback(null, onError.toString());
+      });
+    } catch (error) {
+      print(error);
+      callback(null, error.toString());
+    }
+  }
+
   void patchBuyerWith2Callbacks(BuyerModel buyerModel,
       Function(BuyerModel? response, dynamic errResp) callback) {
     Dio dio = new Dio();

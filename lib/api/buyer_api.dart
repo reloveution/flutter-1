@@ -48,8 +48,6 @@ class BuyerApi extends BaseApiService {
       buyersDefUri,
       buyerModel.toFormatJson(),
       (resp, errResp) {
-        print('error from buyer Api: $errResp');
-        print(BuyerModel.fromJson(resp));
         callback(resp != null ? BuyerModel.fromJson(resp) : null, errResp);
       },
     );
